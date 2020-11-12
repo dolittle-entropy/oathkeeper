@@ -391,6 +391,7 @@ func (r *RegistryMemory) prepareMutators() {
 			mutate.NewMutatorIDToken(r.c, r),
 			mutate.NewMutatorNoop(r.c),
 			mutate.NewMutatorHydrator(r.c, r),
+			mutate.NewMutatorBearer(r.c),
 		}
 
 		r.mutators = map[string]mutate.Mutator{}

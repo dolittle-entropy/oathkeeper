@@ -1012,6 +1012,41 @@
         }
       },
       "additionalProperties": false
+    },
+    "configMutatorsBearer": {
+      "type": "object",
+      "title": "Bearer Mutator Configuration",
+      "description": "This section is optional when the mutator is disabled.",
+      "required": [
+        "token_from"
+      ],
+      "properties": {
+        "token_from": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "file": {
+                  "type": "string"
+                }
+              },
+              "required": ["file"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "environment_variable": {
+                  "type": "string"
+                }
+              },
+              "required": ["environment_variable"],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
     }
   },
   "properties": {
@@ -1722,6 +1757,36 @@
               "required": [
                 "config"
               ]
+            },
+            {
+              "properties": {
+                "enabled": {
+                  "const": false
+                }
+              }
+            }
+          ]
+        },
+        "bearer": {
+          "title": "Bearer Token",
+          "description": "The [`bearer` mutator](https://www.ory.sh/oathkeeper/docs/pipeline/mutator#bearer).",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "$ref": "#/definitions/handlerSwitch"
+            }
+          },
+          "oneOf": [
+            {
+              "properties": {
+                "enabled": {
+                  "const": true
+                },
+                "config": {
+                  "$ref": "#/definitions/configMutatorsBearer"
+                }
+              },
+              "required": ["config"]
             },
             {
               "properties": {
