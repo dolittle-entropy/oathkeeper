@@ -13,22 +13,6 @@ import (
 	"github.com/ory/oathkeeper/pipeline/authn"
 )
 
-/*
-
-mutators:
-  bearer:
-    enabled: true
-
----
-
-mutators:
-  - handler: bearer
-	config:
-	  token_from:
-		file: "/var/lib/kubernetes.io/serviceaccount/token"
-		environment_variable: "TOKEN"
-*/
-
 type MutatorBearerTokenFromConfig struct {
 	File                string `json:"file"`
 	EnvironmentVariable string `json:"environment_variable"`
