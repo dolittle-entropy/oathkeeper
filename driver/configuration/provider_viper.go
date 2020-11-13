@@ -75,6 +75,8 @@ const (
 
 	ViperKeyMutatorHeaderIsEnabled = "mutators.header.enabled"
 
+	ViperKeyMutatorBearerIsEnabled = "mutators.bearer.enabled"
+
 	ViperKeyMutatorNoopIsEnabled = "mutators.noop.enabled"
 
 	ViperKeyMutatorHydratorIsEnabled = "mutators.hydrator.enabled"
