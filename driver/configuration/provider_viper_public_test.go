@@ -376,6 +376,12 @@ func TestViperProvider(t *testing.T) {
 			require.NoError(t, a.Validate(nil))
 		})
 
+		t.Run("mutator=bearer", func(t *testing.T) {
+			a := mutate.NewMutatorBearer(p)
+			assert.False(t, p.MutatorIsEnabled(a.GetID()))
+			require.Error(t, a.Validate(nil))
+		})
+
 		t.Run("mutator=hydrator", func(t *testing.T) {
 			a := mutate.NewMutatorHydrator(p, new(x.TestLoggerProvider))
 			assert.True(t, p.MutatorIsEnabled(a.GetID()))
